@@ -1,0 +1,28 @@
+
+
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: green;
+}
+
+.mainHeader {
+    color: red
+
+}
+
+.search {
+  /* position: absolute; */
+  top: 10px;
+  left: 10%;
+}
+
+.container {
+  /* position: absolute; */
+  top: 10%;
+  left: 20%;
+}

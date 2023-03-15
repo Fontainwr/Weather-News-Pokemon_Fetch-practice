@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Live Data Project</title>
+    <meta charset="utf-8">
+    <script src="data.js"></script>
+    <script src="code.js"></script>
+
+    <!-- <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" conte//[ Skeleton = helps with any device show in proper size. ]      -->
+    <link tel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/> 
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pokemon API</title>
+
+
+  </head>
+  
+  <!-- //NOTE:  for image we are using http://pokeapi.co/api/v2/pokemon
+  <body> -->
+    <h2 class="mainHeader">"Welcome to the Update APP:"</h2>
+    <h3> You can search a Pokemon(...very random), weather, and news!</h3>
+    <main>
+      <div class="searchBox">
+        <input
+          id="pokemonName"
+          type="Pokemon name"
+          placeholder="Pokemon name"
+        />
+        <button id="search">Click to search a Pokemon HERE {img} ⬅️</button>
+      </div>
+      <p><b>NOTE: Will also show weight</b></p>
+      <div class="pokemonBox"></div>
+    </main>
+
+
+    <h1> In todays news in Tokyo</h1>
+      <form class="search" action="">
+        <lable for="">News</lable>
+        <input class="input" type="text"> 
+        <input type="submit"/>
+      </form>
+    
+      <div class="container"> // used to put the fetch data in
+        <ul class="news-list"></ul>
+      </div>
+
+      <script> //Testing javascript in the html document 
+        const searchFrom = document.querySelector(".search");
+        const input = document.querySelector(".input");
+        const newsList = document.querySelector(".news-list");
+
+        searchFrom.addEventListener("submit", retrieve)
+        // e is the event 
+        function retrieve(e){
+          newsList.innerHTML ="" // to help rest the page after search.  
+          e.preventDefault()
+          const apiKey = "27fe8b58438146739dafbbcf6caef464" // This is the api needed for the website I used 
+          let topic = input.value; // for the input to look for title via the url using the api site and key
+          let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`  //actually using the site to find topic
+          fetch(url).then((res) =>{ // the res is uses onbehalf of the request and reponse to send data from the server to the client via http
+            return res.json() // to convert it via json data to read in javascript + html
+        }).then((data) => {
+          console.log(data)
+          data.articles.forEach(articles => {  // this locates the news articles 
+           let li = document.createElement("li");
+           let a = document.createElement("a");
+           a.setAttribute("href", articles.url);
+           a.setAttribute("target", "_blank"); //blank makesthe page not open a new tab but just keep all on same page
+           a.textContent = articles.title;
+           li.appendChild(a);
+           newsList.appendChild(li); //puts everything in "new-list" location in html to run all remaining function
+          })
+        })
+          console.log(topic)
+        }
+      </script>
+
+
+
+
+
+
+
+
+    <h1> How is the Weather in Japan, Tokyo?</h1>
+    <div id="temperature">
+      Please wait loading...
+    </div>
+    <div id="news"> 
+      <!-- loading... -->
+    </div>
+    <!-- <script src="script.js"></script> -->
+  
+
+
+
+
+
+    <!-- <h1 class="text-center">The Forecast in Japan?</h1>
+    <div class="container">
+
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">The Forecast</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Japan Weather</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div> -->
+
+    <!-- </h1> -->
+  </body>
+</html>
