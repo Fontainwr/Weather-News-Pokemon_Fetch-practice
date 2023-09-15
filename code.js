@@ -10,23 +10,7 @@ window.addEventListener('load', () => {
   //2.) .getWeather() = takes string of city (ect.Tokyo).
   //3.) .enableTestMoe() = takes in no parameters. For testing.  
 
-  let weatherData = dataSource.getWeather("Tokyo"); 
 
-
-  console.log(weatherData.hourly);
-
-  let temperatureDiv = document.getElementById('temperature');
-  temperatureDiv.innerText = "The current temperature in Tokyo is " + weatherData.tempC;
-
-  let getTemperatureData = () => { 
-    for ( let i = 0; i < weatherData.hourly.length; i++) {
-      let  hourly = weatherData.hourly[i];
-      let hourInformationDiv = document.createElement("div"); 
-      document.body.append(hourInformationDiv);
-      hourInformationDiv.innerText = hourly.tempC
-    }
-  }
-  getTemperatureData();
 
 // NEXT ONE!!!!!!!!!!!!!!!!!!!!!! [check "update", ]
 
